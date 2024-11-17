@@ -71,7 +71,7 @@ class WithPhoneScreen extends StatelessWidget {
                   );
                 },
                 style: ElevatedButton.styleFrom(
-                  primary: Color(0xFF4F6979), // Button background color
+                  backgroundColor: Color(0xFF4F6979), // Button background color
                   padding: EdgeInsets.symmetric(vertical: 15),
                   shape: RoundedRectangleBorder(
                     borderRadius: BorderRadius.circular(30),

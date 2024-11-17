@@ -1,0 +1,4 @@
+<resources>
+    <!-- Add the Web Client ID from Firebase -->
+    <string name="default_web_client_id">1084269317327-qim3e3r8g6im7ot83ibu4b51no4vie0j.apps.googleusercontent.com</string>
+</resources>

@@ -1,5 +1,3 @@
-import 'dart:developer'; // For log function
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'signin_screen.dart'; // Import your SignInScreen
 
@@ -15,8 +13,8 @@ class _SignUpScreenState extends State<WithEmailScreen> {
   bool _isObscure = true;
   bool _isLoading = false;
 
-  // Create Account method with enhanced error handling
-  void createAccount() async {
+  // Create Account method without Firebase
+  void createAccount() {
     String email = emailController.text.trim();
     String password = passwordController.text.trim();
     String cPassword = cPasswordController.text.trim();
@@ -37,20 +35,16 @@ class _SignUpScreenState extends State<WithEmailScreen> {
       setState(() {
         _isLoading = true;
       });
-      try {
-        UserCredential userCredential = await FirebaseAuth.instance
-            .createUserWithEmailAndPassword(email: email, password: password);
-        if (userCredential.user != null) {
-          Navigator.pop(context); // Navigate back on successful sign-up
-        }
-      } on FirebaseAuthException catch (ex) {
-        log(ex.code.toString());
-        showSnackBarMessage("Error: ${ex.message}");
-      } finally {
+
+      // Simulate account creation logic
+      Future.delayed(Duration(seconds: 2), () {
         setState(() {
           _isLoading = false;
         });
-      }
+        // Show success message and navigate back
+        showSnackBarMessage("Account created successfully!");
+        Navigator.pop(context);
+      });
     }
   }
 
@@ -59,7 +53,6 @@ class _SignUpScreenState extends State<WithEmailScreen> {
     ScaffoldMessenger.of(context).showSnackBar(
       SnackBar(
         content: Text(message),
-        
         backgroundColor: Colors.red,
       ),
     );
